@@ -37,10 +37,6 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
-
-import static com.voltron.router.compiler.Constants.ACTIVITY;
-import static com.voltron.router.compiler.Constants.FRAGMENT;
-import static com.voltron.router.compiler.Constants.FRAGMENT_V4;
 import static com.voltron.router.compiler.Constants.METHOD_INJECT;
 import static com.voltron.router.compiler.Constants.NAME_OF_AUTOWIRED;
 import static javax.lang.model.element.Modifier.PUBLIC;
@@ -57,7 +53,7 @@ public class AutowiredProcessor extends AbstractProcessor {
     private TypeUtils typeUtils;
     private Elements elements;
 
-    // Contain field need autowired and his super class.
+    // Contain field need autowiored and his super class.
     private Map<TypeElement, List<Element>> parentAndChild = new HashMap<>();
 
     @Override
