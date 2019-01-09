@@ -30,8 +30,18 @@ class MainActivity : AppCompatActivity() {
         btn_go_within_module.setOnClickListener {
             VRouter.with(this)
                     .path("/main/second")
+                    .serializableExtra("test", TestSerializable("Donald Duck", 100))
+                    .parcelableExtra("testParcelable", TestParcelable("Mickey Mouse", 101))
+                    .intExtra("testInt", 99)
+                    .go()
+        }
+
+        btn_go_within_module_kotlin.setOnClickListener {
+            VRouter.with(this)
+                    .path("/main/third")
                     .serializableExtra("test", TestSerializable("Tom", 100))
                     .parcelableExtra("testParcelable", TestParcelable("Jerry", 101))
+                    .intExtra("testInt", 99)
                     .go()
         }
 
@@ -54,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                     .scheme("voltron")
                     .host("kotlin.com")
                     .path("/test")
+                    .intExtra("testInt", 99)
                     .go()
         }
 

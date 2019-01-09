@@ -3,6 +3,7 @@ package com.voltron.router.compiler;
 
 public interface Constants {
     String KEY_MODULE_NAME = "VOLTRON_ROUTER_MODULE_NAME";
+    String KEY_PRIVATE_AUTOWIRED_POLICY = "PRIVATE_AUTOWIRED_POLICY";
 
     String MODULE_NAME_NOT_CONFIGED_ERR_MSG = "MODULE NAME NOT CONFIGURED or ILLEGAL! Please re-check it in your build.gradle";
 
@@ -21,20 +22,25 @@ public interface Constants {
     }
 
     // Java type
-     String LANG = "java.lang";
-     String BYTE = LANG + ".Byte";
-     String SHORT = LANG + ".Short";
-     String INTEGER = LANG + ".Integer";
-     String LONG = LANG + ".Long";
-     String FLOAT = LANG + ".Float";
-     String DOUBEL = LANG + ".Double";
-     String BOOLEAN = LANG + ".Boolean";
-     String CHAR = LANG + ".Character";
-     String STRING = LANG + ".String";
-     String SERIALIZABLE = "java.io.Serializable";
-     String PARCELABLE = "android.os.Parcelable";
+    String LANG = "java.lang";
+    String BYTE = LANG + ".Byte";
+    String SHORT = LANG + ".Short";
+    String INTEGER = LANG + ".Integer";
+    String LONG = LANG + ".Long";
+    String FLOAT = LANG + ".Float";
+    String DOUBEL = LANG + ".Double";
+    String BOOLEAN = LANG + ".Boolean";
+    String CHAR = LANG + ".Character";
+    String STRING = LANG + ".String";
+    String SERIALIZABLE = "java.io.Serializable";
+    String PARCELABLE = "android.os.Parcelable";
 
-    // methodName
-    String METHOD_INJECT = "inject" ;
-    String NAME_OF_AUTOWIRED = "__Autowired" ;
+    enum PrivateAutowiredPolicy {
+
+        // 报错并退出编译流程（默认行为）
+        ABORT,
+
+        // 尝试找到相应的 private 字段的 setter 方法
+        TRY_SETTER
+    }
 }

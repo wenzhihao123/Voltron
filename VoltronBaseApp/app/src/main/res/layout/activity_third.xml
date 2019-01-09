@@ -5,30 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".KotlinTestActivity">
-
+    tools:context=".ThirdActivity">
     <TextView
+        android:id="@+id/serializableParam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="KOTLIN"
+        android:text="wait param"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="80dp"
         />
+
     <TextView
+        android:id="@+id/parcelableParam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="route: voltron://kotlin.com/test"
+        android:text="wait param"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="80dp"
         />
 
     <TextView
         android:id="@+id/intParam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="int param: "
-        android:layout_gravity="left"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="40dp"
+        android:text="wait param"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WITHIN APP MODULE KOTLIN"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="route: /main/third"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        />
+
 </LinearLayout>
