@@ -345,7 +345,7 @@ public class Postcard {
 
         /**
          * 此处的conn全部由外部实现，不进行任何逻辑处理
-         * flags 与正常绑定服务flags
+         * flags与binsService设置的flags保持一致
          */
         public Builder bindService(@NonNull ServiceConnection serviceConnection, int flags) {
             P.conn = serviceConnection;
