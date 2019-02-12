@@ -1,41 +1,19 @@
 package com.voltron.demo.app
 
 import android.app.Activity
-import android.content.ComponentName
-import android.content.Context
 import android.content.Intent
-import android.content.ServiceConnection
 import android.os.Bundle
-import android.os.IBinder
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.widget.Toast
 import com.voltron.demo.app.inject.TestParcelable
 import com.voltron.demo.app.inject.TestSerializable
 import com.voltron.demo.app.utils.UrlUtil
 import com.voltron.router.api.IRouteSchemeHandler
 import com.voltron.router.api.VRouter
-import com.voltron.router.demo.mod_java.service.DemoBinder
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        val TAG = javaClass.simpleName
-    }
-
-    //test for bind service
-    var connection = object :ServiceConnection{
-        override fun onServiceDisconnected(name: ComponentName?) {
-            Log.e(TAG, "onServiceDisconnected")
-        }
-
-        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-            val localBinder = service as DemoBinder
-            localBinder.sayHello()
-            Log.e(TAG, "onServiceConnected")
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -151,23 +129,11 @@ class MainActivity : AppCompatActivity() {
         }
         btn_start_service.setOnClickListener {
             VRouter.with(this)
-                    .route("/modulea/service")
-                    .stringExtra("url", "file:///android_asset/scheme-test.html")
+                    .scheme("voltron")
+                    .host("kotlin.com")
+                    .path("/test/service")
                     .go()
         }
-
-        btn_start_bindservice.setOnClickListener {
-            VRouter.with(this)
-                    .route("/modulea/bindservice")
-                    .stringExtra("url", "https://www.baidu.com")
-                    .bindService(connection, Context.BIND_AUTO_CREATE)
-                    .go()
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        unbindService(connection)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
